@@ -49,6 +49,21 @@ public class Main extends Application
 
 	static FlyTextFieldManager text_field = new FlyTextFieldManager();
 
+
+	public static boolean Collision(double x1,double y1,double width1,double height1,
+			double x2,double y2,double width2,double height2)
+	{
+		if(x1 <= x2 + width2 && y1 + height1 >= y2
+				&& x1 + width1 >= x2 && y1 <= y2 + height2)
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+
+
 	@Override public void start(Stage primaryStage)
 	{
 		try
@@ -160,7 +175,7 @@ public class Main extends Application
 						try
 						{
 							map.Render(renderer,
-									map_camera.look_at_x,map_camera.look_at_y,
+									(int)map_camera.look_at_x,(int)map_camera.look_at_y,
 										map_render_width, map_render_height);
 						}
 						catch (IOException e) {e.printStackTrace();}
@@ -401,7 +416,7 @@ public class Main extends Application
 
 						try
 						{
-							map.Render(renderer,map_camera.look_at_x,map_camera.look_at_y,
+							map.Render(renderer,(int)map_camera.look_at_x,(int)map_camera.look_at_y,
 								map_render_width, map_render_height);
 
 						}
@@ -411,6 +426,62 @@ public class Main extends Application
 
 				}
 			});
+
+
+			/*地图编辑*/
+			canvas.setOnMouseClicked(new EventHandler<MouseEvent>(){
+				@Override public void handle(MouseEvent e)
+				{
+					if(map != null && e.getButton() == MouseButton.PRIMARY)
+					{
+						for(int i = 0;i < map.height;i++)
+						{
+							for(int j = 0;j < map.width;j++)
+							{
+								int n = j + i * map.width;
+
+								if(Collision(e.getX(), e.getY(),
+										1, 1,
+										map_camera.look_at_x + j * map_render_width,
+										map_camera.look_at_y + i * map_render_height,
+										map_render_width, map_render_height))
+								{
+									if(map.data[n] < map.tile_count)
+										map.data[n] += 1;
+								}
+							}
+						}
+					}
+					else if(map != null && e.getButton() == MouseButton.SECONDARY)
+					{
+						for(int i = 0;i < map.height;i++)
+						{
+							for(int j = 0;j < map.width;j++)
+							{
+								int n = j + i * map.width;
+
+								if(Collision(e.getX(), e.getY(),
+										1, 1,
+										map_camera.look_at_x + j * map_render_width,
+										map_camera.look_at_y + i * map_render_height,
+										map_render_width, map_render_height))
+								{
+									if(map.data[n] > 0)
+										map.data[n] -= 1;
+								}
+							}
+						}
+					}
+					try
+					{
+						map.Render(renderer,(int)map_camera.look_at_x,(int)map_camera.look_at_y,
+							map_render_width, map_render_height);
+
+					}
+					catch (IOException e1){e1.printStackTrace();}
+				}
+			});
+
 
 			root.setTop(menu_bar.GetMenuBar());
 			root.setCenter(canvas);
