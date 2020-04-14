@@ -373,6 +373,14 @@ public class Main extends Application
 						{
 							map_render_width = Integer.parseInt(field.GetText(0));
 							map_render_height = Integer.parseInt(field.GetText(1));
+
+							try
+							{
+								map.Render(renderer,(int)map_camera.look_at_x,(int)map_camera.look_at_y,
+									map_render_width, map_render_height);
+
+							}
+							catch (IOException e1){e1.printStackTrace();}
 						}
 						else
 						{
