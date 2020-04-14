@@ -11,10 +11,10 @@ import javafx.scene.control.SeparatorMenuItem;
 
 public class FlyMenuBar
 {
-	MenuBar menu_bar;
-	ArrayList<Menu> menu;
-	ArrayList<MenuItem> menu_item;
-	ArrayList<SeparatorMenuItem> menu_item_separator;
+	private MenuBar menu_bar;
+	private ArrayList<Menu> menu;
+	private ArrayList<MenuItem> menu_item;
+	private ArrayList<SeparatorMenuItem> menu_item_separator;
 
 	public FlyMenuBar()
 	{
@@ -25,11 +25,11 @@ public class FlyMenuBar
 	}
 
 	/**
-	 *  Ìí¼ÓÒ»¸ö²Ëµ¥
+	 *  æ·»åŠ ä¸€ä¸ªèœå•
 	 *
-	 *  @param menu_text ÒªÌí¼ÓµÄ²Ëµ¥µÄÎÄ±¾
+	 *  @param menu_text è¦æ·»åŠ çš„èœå•çš„æ–‡æœ¬
 	 *
-	 *  @return ·µ»Ø²Ëµ¥Ë÷Òı
+	 *  @return è¿”å›èœå•ç´¢å¼•
 	 * */
 	public int AddMenu()
 	{
@@ -39,11 +39,11 @@ public class FlyMenuBar
 	}
 
 	/**
-	 *  Ìí¼ÓÒ»¸ö²Ëµ¥
+	 *  æ·»åŠ ä¸€ä¸ªèœå•
 	 *
-	 *  @param menu_text ÒªÌí¼ÓµÄ²Ëµ¥µÄÎÄ±¾
+	 *  @param menu_text è¦æ·»åŠ çš„èœå•çš„æ–‡æœ¬
 	 *
-	 *  @return ·µ»Ø²Ëµ¥Ë÷Òı
+	 *  @return è¿”å›èœå•ç´¢å¼•
 	 * */
 	public int AddMenu(String menu_text)
 	{
@@ -54,110 +54,110 @@ public class FlyMenuBar
 
 
 	/**
-	 * Ìí¼Ó¶à¸ö²Ëµ¥
+	 * æ·»åŠ å¤šä¸ªèœå•
 	 *
-	 * @param n ÒªÌí¼ÓµÄ²Ëµ¥ÊıÁ¿
+	 * @param n è¦æ·»åŠ çš„èœå•æ•°é‡
 	 *
-	 * @return ·µ»Ø¶à¸ö²Ëµ¥µÄË÷Òı
+	 * @return è¿”å›å¤šä¸ªèœå•çš„ç´¢å¼•
 	 * */
 	public int[] AddMenus(int n)
 	{
-		int[] menu_index = new int[n];//¸÷¸ö²Ëµ¥µÄË÷Òı
+		int[] menu_index = new int[n];//å„ä¸ªèœå•çš„ç´¢å¼•
 
 		for(int i = 0;i < n;i++)
-			menu_index[i] = this.AddMenu();//Ìí¼ÓÒ»¸ö²Ëµ¥
+			menu_index[i] = this.AddMenu();//æ·»åŠ ä¸€ä¸ªèœå•
 
-		return menu_index;//·µ»Ø¸÷¸ö²Ëµ¥Ë÷Òı
+		return menu_index;//è¿”å›å„ä¸ªèœå•ç´¢å¼•
 	}
 
 	/**
-	 * Ìí¼Ó¶à¸ö²Ëµ¥
+	 * æ·»åŠ å¤šä¸ªèœå•
 	 *
-	 * @param menu_text ÒªÌí¼ÓµÄ²Ëµ¥µÄÎÄ±¾
+	 * @param menu_text è¦æ·»åŠ çš„èœå•çš„æ–‡æœ¬
 	 *
-	 * @return ·µ»Ø¶à¸ö²Ëµ¥µÄË÷Òı
+	 * @return è¿”å›å¤šä¸ªèœå•çš„ç´¢å¼•
 	 * */
 	public int[] AddMenus(String... menu_text)
 	{
-		int[] menu_index = new int[menu_text.length];//¸÷¸ö²Ëµ¥µÄË÷Òı
+		int[] menu_index = new int[menu_text.length];//å„ä¸ªèœå•çš„ç´¢å¼•
 
 		for(int i = 0;i < menu_text.length;i++)
-			menu_index[i] = this.AddMenu(menu_text[i]);//Ìí¼ÓÒ»¸ö²Ëµ¥
+			menu_index[i] = this.AddMenu(menu_text[i]);//æ·»åŠ ä¸€ä¸ªèœå•
 
-		return menu_index;//·µ»Ø¸÷¸ö²Ëµ¥Ë÷Òı
+		return menu_index;//è¿”å›å„ä¸ªèœå•ç´¢å¼•
 	}
 
 
 	/**
-	 * Ìí¼ÓÒ»¸ö²Ëµ¥Ïî
+	 * æ·»åŠ ä¸€ä¸ªèœå•é¡¹
 	 *
-	 * @param menu_index ÒªÌí¼Ó²Ëµ¥ÏîµÄ²Ëµ¥µÄË÷Òı
+	 * @param menu_index è¦æ·»åŠ èœå•é¡¹çš„èœå•çš„ç´¢å¼•
 	 *
-	 * @return ·µ»Ø²Ëµ¥ÏîË÷Òı
+	 * @return è¿”å›èœå•é¡¹ç´¢å¼•
 	 * */
 	public int AddMenuItem(int menu_index)
 	{
-		menu_item.add(new MenuItem());//Ìí¼Ó²Ëµ¥Ïî
-		menu.get(menu_index).getItems().add(menu_item.get(menu_item.size() - 1));//Íù²Ëµ¥Ìí¼Ó²Ëµ¥Ïî
-		return menu_item.size() - 1;//·µ»Ø²Ëµ¥ÏîË÷Òı,Ë÷ÒıµÈÓÚ²Ëµ¥ÏîÊıÁ¿ -1
+		menu_item.add(new MenuItem());//æ·»åŠ èœå•é¡¹
+		menu.get(menu_index).getItems().add(menu_item.get(menu_item.size() - 1));//å¾€èœå•æ·»åŠ èœå•é¡¹
+		return menu_item.size() - 1;//è¿”å›èœå•é¡¹ç´¢å¼•,ç´¢å¼•ç­‰äºèœå•é¡¹æ•°é‡ -1
 	}
 
 	/**
-	 * Ìí¼ÓÒ»¸ö²Ëµ¥Ïî
+	 * æ·»åŠ ä¸€ä¸ªèœå•é¡¹
 	 *
-	 * @param menu_index ÒªÌí¼Ó²Ëµ¥ÏîµÄ²Ëµ¥µÄË÷Òı
-	 * @param menu_item_text ÒªÌí¼ÓµÄ²Ëµ¥ÏîµÄÎÄ±¾
+	 * @param menu_index è¦æ·»åŠ èœå•é¡¹çš„èœå•çš„ç´¢å¼•
+	 * @param menu_item_text è¦æ·»åŠ çš„èœå•é¡¹çš„æ–‡æœ¬
 	 *
-	 * @return ·µ»Ø²Ëµ¥ÏîË÷Òı
+	 * @return è¿”å›èœå•é¡¹ç´¢å¼•
 	 * */
 	public int AddMenuItem(int menu_index,String menu_item_text)
 	{
-		menu_item.add(new MenuItem(menu_item_text));//Ìí¼Ó²Ëµ¥Ïî
-		menu.get(menu_index).getItems().add(menu_item.get(menu_item.size() - 1));//Íù²Ëµ¥Ìí¼Ó²Ëµ¥Ïî
-		return menu_item.size() - 1;//·µ»Ø²Ëµ¥ÏîË÷Òı,Ë÷ÒıµÈÓÚ²Ëµ¥ÏîÊıÁ¿ -1
+		menu_item.add(new MenuItem(menu_item_text));//æ·»åŠ èœå•é¡¹
+		menu.get(menu_index).getItems().add(menu_item.get(menu_item.size() - 1));//å¾€èœå•æ·»åŠ èœå•é¡¹
+		return menu_item.size() - 1;//è¿”å›èœå•é¡¹ç´¢å¼•,ç´¢å¼•ç­‰äºèœå•é¡¹æ•°é‡ -1
 	}
 
 	/**
-	 * Ìí¼Ó¶à¸ö²Ëµ¥Ïî
+	 * æ·»åŠ å¤šä¸ªèœå•é¡¹
 	 *
-	 * @param menu_index ÒªÌí¼Ó²Ëµ¥ÏîµÄ²Ëµ¥µÄË÷Òı
-	 * @param n ÒªÌí¼ÓµÄ²Ëµ¥ÏîµÄÊıÁ¿
+	 * @param menu_index è¦æ·»åŠ èœå•é¡¹çš„èœå•çš„ç´¢å¼•
+	 * @param n è¦æ·»åŠ çš„èœå•é¡¹çš„æ•°é‡
 	 *
-	 * @return ·µ»Ø¶à¸ö²Ëµ¥ÏîµÄË÷Òı
+	 * @return è¿”å›å¤šä¸ªèœå•é¡¹çš„ç´¢å¼•
 	 * */
 	public int[] AddMenuItems(int menu_index,int n)
 	{
-		int[] index = new int[n];//¸÷¸ö²Ëµ¥µÄË÷Òı
+		int[] index = new int[n];//å„ä¸ªèœå•çš„ç´¢å¼•
 
 		for(int i = 0;i < n;i++)
-			index[i] = this.AddMenuItem(menu_index);//Ìí¼ÓÒ»¸ö²Ëµ¥Ïî
+			index[i] = this.AddMenuItem(menu_index);//æ·»åŠ ä¸€ä¸ªèœå•é¡¹
 
-		return index;//·µ»Ø¸÷¸ö²Ëµ¥ÏîË÷Òı
+		return index;//è¿”å›å„ä¸ªèœå•é¡¹ç´¢å¼•
 	}
 
 	/**
-	 * Ìí¼Ó¶à¸ö²Ëµ¥Ïî
+	 * æ·»åŠ å¤šä¸ªèœå•é¡¹
 	 *
-	 * @param menu_index ÒªÌí¼Ó²Ëµ¥ÏîµÄ²Ëµ¥µÄË÷Òı
-	 * @param menu_item_text ÒªÌí¼ÓµÄ²Ëµ¥ÏîµÄÊıÁ¿ÎÄ±¾
+	 * @param menu_index è¦æ·»åŠ èœå•é¡¹çš„èœå•çš„ç´¢å¼•
+	 * @param menu_item_text è¦æ·»åŠ çš„èœå•é¡¹çš„æ•°é‡æ–‡æœ¬
 	 *
-	 * @return ·µ»Ø¶à¸ö²Ëµ¥ÏîµÄË÷Òı
+	 * @return è¿”å›å¤šä¸ªèœå•é¡¹çš„ç´¢å¼•
 	 * */
 	public int[] AddMenuItems(int menu_index,String... menu_item_text)
 	{
-		int[] index = new int[menu_item_text.length];//¸÷¸ö²Ëµ¥µÄË÷Òı
+		int[] index = new int[menu_item_text.length];//å„ä¸ªèœå•çš„ç´¢å¼•
 
 		for(int i = 0;i < menu_item_text.length;i++)
-			index[i] = this.AddMenuItem(menu_index,menu_item_text[i]);//Ìí¼ÓÒ»¸ö²Ëµ¥Ïî
+			index[i] = this.AddMenuItem(menu_index,menu_item_text[i]);//æ·»åŠ ä¸€ä¸ªèœå•é¡¹
 
-		return index;//·µ»Ø¸÷¸ö²Ëµ¥ÏîË÷Òı
+		return index;//è¿”å›å„ä¸ªèœå•é¡¹ç´¢å¼•
 	}
 
 
 	/**
-	 * ÒÆ³ı²Ëµ¥
+	 * ç§»é™¤èœå•
 	 *
-	 * @param menu_index ÒªÒÆ³ıµÄ²Ëµ¥µÄË÷Òı
+	 * @param menu_index è¦ç§»é™¤çš„èœå•çš„ç´¢å¼•
 	 * */
 	public void RemoveMenu(int menu_index)
 	{
@@ -166,16 +166,16 @@ public class FlyMenuBar
 	}
 
 	/**
-	 * ²Ëµ¥²åÈë·Ö¸îÏß
+	 * èœå•æ’å…¥åˆ†å‰²çº¿
 	 *
-	 * @param menu_index Òª²åÈë·Ö¸îÏßµÄ²Ëµ¥µÄË÷Òı
-	 * @param separator_index ·Ö¸îÏßË÷Òı
+	 * @param menu_index è¦æ’å…¥åˆ†å‰²çº¿çš„èœå•çš„ç´¢å¼•
+	 * @param separator_index åˆ†å‰²çº¿ç´¢å¼•
 	 * */
 	public void MenuInsertSeparator(int menu_index,int separator_index)
 	{
-		menu_item_separator.add(new SeparatorMenuItem());//´´½¨Ò»¸öĞÂµÄ·Ö¸î·û
+		menu_item_separator.add(new SeparatorMenuItem());//åˆ›å»ºä¸€ä¸ªæ–°çš„åˆ†å‰²ç¬¦
 
-		/*½«·Ö¸î·û²åÈë²Ëµ¥Ö®ÖĞ*/
+		/*å°†åˆ†å‰²ç¬¦æ’å…¥èœå•ä¹‹ä¸­*/
 		menu.get(menu_index).getItems().add(separator_index,
 		menu_item_separator.get(menu_item_separator.size() - 1));
 	}
@@ -183,10 +183,10 @@ public class FlyMenuBar
 
 
 	/**
-	 * ²Ëµ¥ÏîÌí¼ÓÊÂ¼ş
+	 * èœå•é¡¹æ·»åŠ äº‹ä»¶
 	 *
-	 * @param menu_item_index ÒªÌí¼ÓµÄ¼àÌıÆ÷µÄ²Ëµ¥ÏîµÄË÷Òı
-	 * @param event ÒªÌí¼ÓµÄÊÂ¼ş
+	 * @param menu_item_index è¦æ·»åŠ çš„ç›‘å¬å™¨çš„èœå•é¡¹çš„ç´¢å¼•
+	 * @param event è¦æ·»åŠ çš„äº‹ä»¶
 	 * */
 	public void MenuItemAddEvent(int menu_item_index,EventHandler<ActionEvent> event)
 	{
@@ -195,115 +195,115 @@ public class FlyMenuBar
 
 
 	/**
-	 * »ñÈ¡²Ëµ¥À¸
+	 * è·å–èœå•æ 
 	 *
-	 * @return ·µ»Ø²Ëµ¥À¸
+	 * @return è¿”å›èœå•æ 
 	 * */
 	public MenuBar GetMenuBar(){return menu_bar;}
 
 	/**
-	 * »ñÈ¡²Ëµ¥
+	 * è·å–èœå•
 	 *
-	 * @param menu_index Òª»ñÈ¡µÄ²Ëµ¥µÄË÷Òı
+	 * @param menu_index è¦è·å–çš„èœå•çš„ç´¢å¼•
 	 *
-	 * @return ·µ»Ø²Ëµ¥
+	 * @return è¿”å›èœå•
 	 * */
 	public Menu GetMenu(int menu_index){return menu.get(menu_index);}
 
 	/**
-	 * »ñÈ¡²Ëµ¥
+	 * è·å–èœå•
 	 *
-	 * @param menu_text Òª»ñÈ¡µÄ²Ëµ¥µÄË÷ÒıÎÄ±¾
+	 * @param menu_text è¦è·å–çš„èœå•çš„ç´¢å¼•æ–‡æœ¬
 	 *
-	 * @return ·µ»Ø²Ëµ¥
+	 * @return è¿”å›èœå•
 	 * */
-	public Menu GetMenu(String menu_text)//·µ»ØµÚÒ»¸öÕÒµ½µÄ
+	public Menu GetMenu(String menu_text)//è¿”å›ç¬¬ä¸€ä¸ªæ‰¾åˆ°çš„
 	{
-		int index = 0;//²Ëµ¥Ë÷Òı
-		for(int i = 0;i < menu.size();i++)//±éÀú²Ëµ¥ÎÄ±¾
+		int index = 0;//èœå•ç´¢å¼•
+		for(int i = 0;i < menu.size();i++)//éå†èœå•æ–‡æœ¬
 		{
-			if(menu.get(i).getText() == menu_text)//Èô²Ëµ¥ÎÄ±¾ÊÇÒªÕÒµÄÎÄ±¾£¬½áÊøÑ­»·
+			if(menu.get(i).getText() == menu_text)//è‹¥èœå•æ–‡æœ¬æ˜¯è¦æ‰¾çš„æ–‡æœ¬ï¼Œç»“æŸå¾ªç¯
 			{
-				index = i;//Ë÷Òı¼ÇÂ¼
-				break;//½áÊøÑ­»·
+				index = i;//ç´¢å¼•è®°å½•
+				break;//ç»“æŸå¾ªç¯
 			}
 		}
-		return menu.get(index);//·µ»Ø²Ëµ¥
+		return menu.get(index);//è¿”å›èœå•
 	}
 
 
 	/**
-	 * »ñÈ¡²Ëµ¥Ïî
+	 * è·å–èœå•é¡¹
 	 *
-	 * @param menu_item_index Òª»ñÈ¡µÄ²Ëµ¥ÏîµÄË÷Òı
+	 * @param menu_item_index è¦è·å–çš„èœå•é¡¹çš„ç´¢å¼•
 	 *
-	 * @return ·µ»Ø²Ëµ¥Ïî
+	 * @return è¿”å›èœå•é¡¹
 	 * */
 	public MenuItem GetMenuItem(int menu_item_index){return menu_item.get(menu_item_index);}
 
 	/**
-	 * »ñÈ¡²Ëµ¥Ïî
+	 * è·å–èœå•é¡¹
 	 *
-	 * @param menu_item_index Òª»ñÈ¡µÄ²Ëµ¥ÏîµÄÎÄ±¾
+	 * @param menu_item_index è¦è·å–çš„èœå•é¡¹çš„æ–‡æœ¬
 	 *
-	 * @return ·µ»Ø²Ëµ¥Ïî
+	 * @return è¿”å›èœå•é¡¹
 	 * */
-	public MenuItem GetMenuItem(String menu_item_text)//·µ»ØµÚÒ»¸öÕÒµ½µÄ
+	public MenuItem GetMenuItem(String menu_item_text)//è¿”å›ç¬¬ä¸€ä¸ªæ‰¾åˆ°çš„
 	{
-		int index = 0;//²Ëµ¥ÏîË÷Òı
-		for(int i = 0;i < menu_item.size();i++)//±éÀú²Ëµ¥ÏîÎÄ±¾
+		int index = 0;//èœå•é¡¹ç´¢å¼•
+		for(int i = 0;i < menu_item.size();i++)//éå†èœå•é¡¹æ–‡æœ¬
 		{
-			if(menu_item.get(i).getText() == menu_item_text)//Èô²Ëµ¥ÏîÎÄ±¾ÊÇÒªÕÒµÄÎÄ±¾£¬½áÊøÑ­»·
+			if(menu_item.get(i).getText() == menu_item_text)//è‹¥èœå•é¡¹æ–‡æœ¬æ˜¯è¦æ‰¾çš„æ–‡æœ¬ï¼Œç»“æŸå¾ªç¯
 			{
-				index = i;//Ë÷Òı¼ÇÂ¼
-				break;//½áÊøÑ­»·
+				index = i;//ç´¢å¼•è®°å½•
+				break;//ç»“æŸå¾ªç¯
 			}
 		}
-		return menu_item.get(index);//·µ»ØË÷Òı
+		return menu_item.get(index);//è¿”å›ç´¢å¼•
 	}
 
 
 	/**
-	 * Í¨¹ı²Ëµ¥ÎÄ±¾ÕÒµ½²Ëµ¥Ë÷Òı
+	 * é€šè¿‡èœå•æ–‡æœ¬æ‰¾åˆ°èœå•ç´¢å¼•
 	 *
-	 * @param ÒªÑ°ÕÒµÄ²Ëµ¥µÄÎÄ±¾
+	 * @param è¦å¯»æ‰¾çš„èœå•çš„æ–‡æœ¬
 	 *
-	 * @return ·µ»Ø²Ëµ¥Ë÷Òı
+	 * @return è¿”å›èœå•ç´¢å¼•
 	 * */
 	public int GetMenuIndex(String menu_text)
 	{
-		int index = 0;//²Ëµ¥Ë÷Òı
-		for(int i = 0;i < menu.size();i++)//±éÀú²Ëµ¥ÎÄ±¾
+		int index = 0;//èœå•ç´¢å¼•
+		for(int i = 0;i < menu.size();i++)//éå†èœå•æ–‡æœ¬
 		{
-			if(menu.get(i).getText() == menu_text)//Èô²Ëµ¥ÎÄ±¾ÊÇÒªÕÒµÄÎÄ±¾£¬½áÊøÑ­»·
+			if(menu.get(i).getText() == menu_text)//è‹¥èœå•æ–‡æœ¬æ˜¯è¦æ‰¾çš„æ–‡æœ¬ï¼Œç»“æŸå¾ªç¯
 			{
-				index = i;//Ë÷Òı¼ÇÂ¼
-				break;//½áÊøÑ­»·
+				index = i;//ç´¢å¼•è®°å½•
+				break;//ç»“æŸå¾ªç¯
 			}
 		}
-		return index;//·µ»Ø²Ëµ¥
+		return index;//è¿”å›èœå•
 	}
 
 
 	/**
-	 * Í¨¹ı²Ëµ¥ÏîÎÄ±¾ÕÒµ½²Ëµ¥Ë÷Òı
+	 * é€šè¿‡èœå•é¡¹æ–‡æœ¬æ‰¾åˆ°èœå•ç´¢å¼•
 	 *
-	 * @param ÒªÑ°ÕÒµÄ²Ëµ¥ÏîµÄÎÄ±¾
+	 * @param è¦å¯»æ‰¾çš„èœå•é¡¹çš„æ–‡æœ¬
 	 *
-	 * @return ·µ»Ø²Ëµ¥ÏîË÷Òı
+	 * @return è¿”å›èœå•é¡¹ç´¢å¼•
 	 * */
 	public int GetMenuItemIndex(String menu_item_text)
 	{
-		int index = 0;//²Ëµ¥ÏîË÷Òı
-		for(int i = 0;i < menu_item.size();i++)//±éÀú²Ëµ¥ÏîÎÄ±¾
+		int index = 0;//èœå•é¡¹ç´¢å¼•
+		for(int i = 0;i < menu_item.size();i++)//éå†èœå•é¡¹æ–‡æœ¬
 		{
-			if(menu_item.get(i).getText() == menu_item_text)//Èô²Ëµ¥ÏîÎÄ±¾ÊÇÒªÕÒµÄÎÄ±¾£¬½áÊøÑ­»·
+			if(menu_item.get(i).getText() == menu_item_text)//è‹¥èœå•é¡¹æ–‡æœ¬æ˜¯è¦æ‰¾çš„æ–‡æœ¬ï¼Œç»“æŸå¾ªç¯
 			{
-				index = i;//Ë÷Òı¼ÇÂ¼
-				break;//½áÊøÑ­»·
+				index = i;//ç´¢å¼•è®°å½•
+				break;//ç»“æŸå¾ªç¯
 			}
 		}
-		return index;//·µ»ØË÷Òı
+		return index;//è¿”å›ç´¢å¼•
 	}
 }
 
