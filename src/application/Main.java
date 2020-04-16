@@ -482,9 +482,11 @@ public class Main extends Application
 					}
 					try
 					{
-						map.Render(renderer,(int)map_camera.look_at_x,(int)map_camera.look_at_y,
+						if(map != null)
+						{
+							map.Render(renderer,(int)map_camera.look_at_x,(int)map_camera.look_at_y,
 							map_render_width, map_render_height);
-
+						}
 					}
 					catch (IOException e1){e1.printStackTrace();}
 				}
