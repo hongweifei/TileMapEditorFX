@@ -35,6 +35,8 @@ public class Main extends Application
 	static FlyTileMap map = null;
 	static String tile_map_path = null;
 
+	static int map_image_index = 0;
+
 	static FlyCamera map_camera = new FlyCamera();
 	static double mouse_last_x = 0;
 	static double mouse_last_y = 0;
@@ -74,7 +76,7 @@ public class Main extends Application
 
 			menu_bar.AddMenuItems(0, "新建","打开","保存","另存为","关闭");
 			menu_bar.AddMenuItems(1, "导入图片(绝对路径)","导入图片(相对路径)","移除图片");
-			menu_bar.AddMenuItems(2, "绘制宽高调整");
+			menu_bar.AddMenuItems(2, "绘制宽高调整","绘制图片选择");
 
 			menu_bar.MenuInsertSeparator(0, 2);
 			menu_bar.MenuInsertSeparator(0, 5);
@@ -396,6 +398,62 @@ public class Main extends Application
 			});
 
 
+			/**绘制图片选择*/
+			menu_bar.MenuItemAddEvent(menu_bar.GetMenuItemIndex("绘制图片选择"),
+			new EventHandler<ActionEvent>(){
+				@Override
+				public void handle(ActionEvent event)
+				{
+					if(map != null)
+					{
+						FlyListView<String> list = new FlyListView<String>();
+
+						list.AddItem("NULL");
+						for(int i = 0;i < map.tile_count;i++)
+						{
+							list.AddItem(map.tile_image_path[i]);
+						}
+						list.GetListView().getSelectionModel().select(map_image_index);
+
+						HBox box = new HBox();
+						box.setSpacing(10);//设置控件间隔
+
+						box.getChildren().add(list.GetListView());
+
+
+						DialogPane pane = new DialogPane();
+						pane.setContent(box);
+
+						ButtonType create_button = new ButtonType("确定",ButtonData.OK_DONE);
+						pane.getButtonTypes().add(create_button);
+
+						Dialog<ButtonType> dialog = new Dialog<ButtonType>();
+						dialog.setDialogPane(pane);
+
+						dialog.setTitle("绘制图片选择");
+
+
+						Optional<ButtonType> result = dialog.showAndWait();
+						if(result.isPresent() && result.get().getButtonData() == ButtonData.OK_DONE)
+						{
+							map_image_index = list.GetSelectedIndex();
+						}
+					}
+					else
+					{
+						Alert information = new Alert(Alert.AlertType.INFORMATION);
+						information.setHeaderText("提示");
+						information.setContentText("未有打开地图");
+						information.show();
+
+						information = null;
+					}
+				}
+
+
+
+			});
+
 
 			/*鼠标移动*/
 			canvas.setOnMouseMoved(new EventHandler<MouseEvent>(){
@@ -454,8 +512,9 @@ public class Main extends Application
 										map_camera.look_at_y + i * map_render_height,
 										map_render_width, map_render_height))
 								{
-									if(map.data[n] < map.tile_count)
-										map.data[n] += 1;
+									//if(map.data[n] < map.tile_count)
+									//	map.data[n] += 1;
+									map.data[n] = (short) map_image_index;
 								}
 							}
 						}
@@ -474,8 +533,9 @@ public class Main extends Application
 										map_camera.look_at_y + i * map_render_height,
 										map_render_width, map_render_height))
 								{
-									if(map.data[n] > 0)
-										map.data[n] -= 1;
+									//if(map.data[n] > 0)
+									//	map.data[n] -= 1;
+									map.data[n] = (short) map_image_index;
 								}
 							}
 						}
