@@ -122,6 +122,27 @@ public class FlyRenderer
 		context.rect(x, y, width, height);
 	}
 
+
+	/**
+	 * 画空心矩形
+	 *
+	 * @param x 绘制横坐标
+	 * @param y 绘制纵坐标
+	 * @param width 绘制宽度
+	 * @param height 绘制高度
+	 * */
+	public void DrawLineRect(double x,double y,double width,double height)
+	{
+		context.beginPath();
+		context.moveTo(x, y);
+		context.lineTo(x + width, y);
+		context.lineTo(x + width, y + height);
+		context.lineTo(x, y + height);
+		context.lineTo(x, y);
+		context.stroke();
+	}
+
+
 	/**
 	 * 画实心矩形
 	 *

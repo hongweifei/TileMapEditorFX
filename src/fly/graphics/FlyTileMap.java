@@ -108,8 +108,20 @@ public class FlyTileMap
 								y + i * height, width, height);
 				}
 
-				renderer.DrawRect(x + j * width, y + i * height,
-						width, height);
+				//renderer.DrawRect(x + j * width, y + i * height,
+				//		width, height);
+
+				renderer.DrawLineRect(x + j * width, y + i * height, width, height);
+
+				/*
+				renderer.GetContext().beginPath();
+				renderer.GetContext().moveTo(x + j * width, y + i * height);
+				renderer.GetContext().lineTo(x + j * width + width, y + i * height);
+				renderer.GetContext().lineTo(x + j * width + width, y + i * height + height);
+				renderer.GetContext().lineTo(x + j * width, y + i * height + height);
+				renderer.GetContext().lineTo(x + j * width, y + i * height);
+				renderer.GetContext().stroke();
+				*/
 			}
 		}
 	}
